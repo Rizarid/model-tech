@@ -7,6 +7,7 @@ export const isRecordData = (data: any): data is RecordData => {
   if (typeof data.temperature !== 'number') return false;
   if (typeof data.wetherId !== 'string') return false;
   if (typeof data.userId !== 'string') return false;
+  if (typeof data.comment !== 'string') return false;
   
   return true;
 }
@@ -36,7 +37,7 @@ export const isUsers = (data: any): data is Users => {
 }
 
 export const isWether = (data: any): data is WetherEnum => {
-  return data in WetherEnum;
+  return Object.values(WetherEnum).includes(data);
 }
 
 export const isWethers = (data: any): data is Wethers => {

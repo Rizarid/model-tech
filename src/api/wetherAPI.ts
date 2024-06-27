@@ -9,7 +9,7 @@ export const wetherApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
   endpoints: (builder) => ({
     getRecords: builder.query<Wethers, void>({
-      query: () => 'wether/',
+      query: () => 'wether',
       transformResponse: (response) => {
         return isWethers(response) ? response : {} ;
       },

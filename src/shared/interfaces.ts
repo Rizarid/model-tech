@@ -17,9 +17,10 @@ export type Users = Record<string, IUser>
 export interface IRecord {
   id: string;
   dateTime: number;
-  temperature: string;
+  temperature: number;
   wetherId: string;
   userId: string
+  comment: string;
 }
 
 export type RecordData = Omit<IRecord, 'id'>

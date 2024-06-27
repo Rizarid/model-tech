@@ -36,6 +36,15 @@ export const users: Users = {
   },
 }
 
-export const records: IRecord[] = []
+export const records: IRecord[] = [
+  {
+    id: '1719498100361',
+    dateTime: 1719498100361,
+    temperature: 15,
+    wetherId: '1',
+    userId: 'c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3d3',
+    comment: 'Какойто комментарий'
+  }
+]
 
 
