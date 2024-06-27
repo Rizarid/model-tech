@@ -1,8 +1,7 @@
 import { http, HttpResponse } from 'msw';
 import { records, users, wethers } from './data';
-import { isRecordData, isString } from './typeguards';
-
-export const API_URL = 'https://wether.com/api'; 
+import { isRecordData, isString } from '../shared/typeguards';
+import { API_URL } from '../shared/constants';
 
 const getUsers = http.get(`${API_URL}/users`, () => {
   return HttpResponse.json(users)

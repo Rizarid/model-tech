@@ -1,4 +1,4 @@
-import { IRecord, Users, WetherEnum, Wethers } from "./interfaces"
+import { IRecord, Users, WetherEnum, Wethers } from "../shared/interfaces"
 
 
 export const wethers: Wethers = {

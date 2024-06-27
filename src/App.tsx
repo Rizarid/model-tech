@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { API_URL } from './mockServer/handlers'
+import { API_URL } from './shared/constants'
+
 
 function App() {
   const [count, setCount] = useState(0)
