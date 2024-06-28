@@ -5,8 +5,8 @@ export const isRecordData = (data: any): data is RecordData => {
   if (typeof data !== 'object') return false;
   if (typeof data.dateTime !== 'number') return false;
   if (typeof data.temperature !== 'number') return false;
-  if (typeof data.wetherId !== 'string') return false;
-  if (typeof data.userId !== 'string') return false;
+  if (typeof data.wetherId !== 'string' && data.wetherId !== undefined) return false;
+  if (typeof data.userId !== 'string' && data.wetherId !== undefined) return false;
   if (typeof data.comment !== 'string') return false;
   
   return true;

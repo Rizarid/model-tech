@@ -18,8 +18,8 @@ export interface IRecord {
   id: string;
   dateTime: number;
   temperature: number;
-  wetherId: string;
-  userId: string
+  wetherId?: string;
+  userId?: string
   comment: string;
 }
 

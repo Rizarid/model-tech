@@ -24,7 +24,7 @@ export const WetherTable: FC<Props> = memo(({selectedRecord, setSelectedRecord})
   }, [])
 
   const userBodyTemplate = useCallback((record: IRecord) => {
-    if (users === undefined || isUsersLoading) {
+    if (users === undefined || record?.userId === undefined || isUsersLoading) {
       return ''
     }
 
@@ -34,7 +34,7 @@ export const WetherTable: FC<Props> = memo(({selectedRecord, setSelectedRecord})
 
   const wetherBodyTemplate = useCallback((record: IRecord) => {
     console.log('Туман' in WetherEnum)
-    if (wethers === undefined || isWetherLoading) {
+    if (wethers === undefined || record?.wetherId === undefined || isWetherLoading) {
       return ''
     }
     return wethers[record.wetherId];
