@@ -1,5 +1,5 @@
 import { FC, memo, useCallback } from "react";
-import { IRecord, WetherEnum } from "../../shared/interfaces";
+import { IRecord } from "../../shared/interfaces";
 import { DataTable, DataTableSelectionSingleChangeEvent } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { usersApi } from "../../api/usersAPI";
@@ -33,7 +33,6 @@ export const WetherTable: FC<Props> = memo(({selectedRecord, setSelectedRecord})
   }, [isUsersLoading, users]);
 
   const wetherBodyTemplate = useCallback((record: IRecord) => {
-    console.log('Туман' in WetherEnum)
     if (wethers === undefined || record?.wetherId === undefined || isWetherLoading) {
       return ''
     }
@@ -42,7 +41,6 @@ export const WetherTable: FC<Props> = memo(({selectedRecord, setSelectedRecord})
 
   const onSelectionChange = useCallback((e: DataTableSelectionSingleChangeEvent<IRecord[]>) => {
     const {value} = e;
-    console.log(value.id, selectedRecord?.id)
     if (value.id !== selectedRecord?.id) setSelectedRecord(value);
     else setSelectedRecord(null)
   }, [selectedRecord?.id, setSelectedRecord])

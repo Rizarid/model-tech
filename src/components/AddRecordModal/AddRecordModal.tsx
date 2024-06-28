@@ -2,7 +2,7 @@ import { Dialog } from "primereact/dialog";
 import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
 import { InputNumber, InputNumberValueChangeEvent } from "primereact/inputnumber";
 import { InputTextarea } from "primereact/inputtextarea";
-import { ChangeEvent, FC, useCallback, useMemo, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useCallback, useMemo, useState } from "react";
 import { usersApi } from "../../api/usersAPI";
 import { wetherApi } from "../../api/wetherAPI";
 import { IUser, RecordData, WetherEnum } from "../../shared/interfaces";
@@ -60,7 +60,9 @@ export const AddRecordModal: FC<Props> = ({modalIsOpen, setModalIsOpen}) => {
     setModalIsOpen(false);
   }, [setModalIsOpen])
 
-  const onSubmit = useCallback(() => {
+  const onSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     const recordData: RecordData = {
       dateTime: Date.now(),
       temperature,
@@ -76,6 +78,7 @@ export const AddRecordModal: FC<Props> = ({modalIsOpen, setModalIsOpen}) => {
 
   return (
     <Dialog header="Добавить запись" visible={modalIsOpen} onHide={onHide}>
+      <form onSubmit={onSubmit} >
         <div className={styles.field}>
           <InputNumber 
             value={temperature} 
@@ -121,13 +124,12 @@ export const AddRecordModal: FC<Props> = ({modalIsOpen, setModalIsOpen}) => {
 
         <Button 
           label="Сохранить" 
-          onClick={onSubmit} 
           style={{
             width: '100%',
             background: 'var(--green-500)'
           }}
-
         />
+      </form>
     </Dialog>
   )
 }
