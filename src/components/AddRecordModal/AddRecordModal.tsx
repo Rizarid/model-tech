@@ -77,7 +77,12 @@ export const AddRecordModal: FC<Props> = ({modalIsOpen, setModalIsOpen}) => {
   }, [addRecord, comment, onHide, selectedUser?.id, selectedWether?.id, temperature])
 
   return (
-    <Dialog header="Добавить запись" visible={modalIsOpen} onHide={onHide}>
+    <Dialog 
+      header="Добавить запись" 
+      visible={modalIsOpen} 
+      onHide={onHide}
+      style={{maxWidth: '90vw'}}
+    >
       <form onSubmit={onSubmit} >
         <div className={styles.field}>
           <InputNumber 
