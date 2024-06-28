@@ -4,6 +4,7 @@
 
 ```js
 git clone https://github.com/Rizarid/model-tech.git
+cd model-tech
 yarn
 yarn dev
 ```
