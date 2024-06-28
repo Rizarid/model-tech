@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 import { records, users, wethers } from './data';
-import { isRecordData, isString } from '../shared/typeguards';
+import { isRecordData } from '../shared/typeguards';
 import { API_URL } from '../shared/constants';
 
 const getUsers = http.get(`${API_URL}/users`, () => {
@@ -32,15 +32,11 @@ const addRecord = http.post(`${API_URL}/records`, async ({ request }) => {
 
 const deleteRecord = http.delete(`${API_URL}/records`, async ({ request }) => {
   const recordId = await request.json();
+  const recordIndex = records.findIndex(record => record.id === recordId?.toString());
 
-  if (isString(recordId)) {
-    const recordIndex = records.findIndex(record => record.id === recordId);
-
-    if (recordIndex !== -1) {
-      const deletedRecords = records.splice(recordIndex, 1)
-      return HttpResponse.json(deletedRecords);
-    }
-    
+  if (recordIndex !== -1) {
+    const deletedRecords = records.splice(recordIndex, 1)
+    return HttpResponse.json(deletedRecords);
   }
 
   return HttpResponse.json({
