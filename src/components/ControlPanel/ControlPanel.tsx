@@ -4,20 +4,23 @@ import { recordsApi } from "../../api/recordAPI";
 import { AddRecordModal } from "../AddRecordModal/AddRecordModal";
 
 import styles from './ControlPanel.module.scss';
+import { IRecord } from "../../shared/interfaces";
 
 interface Props {
   selectedRecordId: string | null;
+  setSelectedRecord: (record: IRecord | null) => void;
 }
 
-export const ControlPanel: FC<Props> = ({selectedRecordId}) => {
+export const ControlPanel: FC<Props> = ({selectedRecordId, setSelectedRecord}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [deleteRecord] = recordsApi.useDeleteRecordMutation();
 
   const deleteButtonClick = useCallback(() => {
     if (selectedRecordId !== null) {
-      deleteRecord(selectedRecordId)
+      deleteRecord(selectedRecordId);
+      setSelectedRecord(null)
     }
-  }, [deleteRecord, selectedRecordId])
+  }, [deleteRecord, selectedRecordId, setSelectedRecord])
 
   const newButtonClick = useCallback(() => {
     setModalIsOpen(true);

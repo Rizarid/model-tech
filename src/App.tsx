@@ -19,6 +19,7 @@ function App() {
             ? selectedRecord.id 
             : selectedRecord
           } 
+          setSelectedRecord={setSelectedRecord}
         />
       </header>
       <main className={styles.main}>
