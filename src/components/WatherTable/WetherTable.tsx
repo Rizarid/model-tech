@@ -6,6 +6,8 @@ import { usersApi } from "../../api/usersAPI";
 import { wetherApi } from "../../api/wetherAPI";
 import { recordsApi } from "../../api/recordAPI";
 
+import styles from './WetherTable.module.scss';
+
 interface Props {
   selectedRecord: IRecord | null;
   setSelectedRecord: (record: IRecord | null) => void;
@@ -46,7 +48,7 @@ export const WetherTable: FC<Props> = memo(({selectedRecord, setSelectedRecord})
   }, [selectedRecord?.id, setSelectedRecord])
 
   return (
-    <div className="card">
+    <div className={styles.wetherTable}>
       <DataTable 
         value={records} 
         selectionMode="single" 
