@@ -2,7 +2,7 @@ import { Dialog } from "primereact/dialog";
 import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
 import { InputNumber, InputNumberValueChangeEvent } from "primereact/inputnumber";
 import { InputTextarea } from "primereact/inputtextarea";
-import { ChangeEvent, FC, FormEvent, useCallback, useMemo, useState } from "react";
+import { ChangeEvent, FC, FormEvent, memo, useCallback, useMemo, useState } from "react";
 import { usersApi } from "../../api/usersAPI";
 import { wetherApi } from "../../api/wetherAPI";
 import { IUser, RecordData, WetherEnum } from "../../shared/interfaces";
@@ -16,7 +16,7 @@ interface Props {
   setModalIsOpen: (newValue: boolean) => void;
 }
 
-export const AddRecordModal: FC<Props> = ({modalIsOpen, setModalIsOpen}) => {
+export const AddRecordModal: FC<Props> = memo(({modalIsOpen, setModalIsOpen}) => {
   const [temperature, setTemperature] = useState(0);
   const [selectedUser, setSelectedUser] = useState<IUser>();
   const [selectedWether, setSelectedWether] = useState<{id: string, wether: WetherEnum}>();
@@ -137,4 +137,4 @@ export const AddRecordModal: FC<Props> = ({modalIsOpen, setModalIsOpen}) => {
       </form>
     </Dialog>
   )
-}
+})

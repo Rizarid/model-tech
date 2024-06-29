@@ -1,5 +1,5 @@
 import { Button } from "primereact/button";
-import { FC, useCallback, useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import { recordsApi } from "../../api/recordAPI";
 import { AddRecordModal } from "../AddRecordModal/AddRecordModal";
 
@@ -11,7 +11,7 @@ interface Props {
   setSelectedRecord: (record: IRecord | null) => void;
 }
 
-export const ControlPanel: FC<Props> = ({selectedRecordId, setSelectedRecord}) => {
+export const ControlPanel: FC<Props> = memo(({selectedRecordId, setSelectedRecord}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [deleteRecord] = recordsApi.useDeleteRecordMutation();
 
@@ -46,4 +46,4 @@ export const ControlPanel: FC<Props> = ({selectedRecordId, setSelectedRecord}) =
       <AddRecordModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
     </>
   )
-}
+})

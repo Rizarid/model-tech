@@ -23,7 +23,6 @@ function App() {
         />
       </header>
       <main className={styles.main}>
-        
         <WetherTable selectedRecord={selectedRecord} setSelectedRecord={setSelectedRecord} />
       </main>
     </>
